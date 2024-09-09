@@ -6,7 +6,7 @@
 /*   By: ataher <ataher@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/07 13:41:49 by ataher            #+#    #+#             */
-/*   Updated: 2024/09/08 12:26:45 by ataher           ###   ########.fr       */
+/*   Updated: 2024/09/09 10:34:04 by ataher           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,27 +55,25 @@ void	ft_putnbr_fd(int n, int fd)
 	ft_putchar_fd(n % 10 + '0', fd);
 }
 
-void print_address(void *ptr) {
-    const char hex_digits[] = "0123456789abcdef";
-    char buffer[2 + sizeof(void*) * 2 + 1];  // Buffer for "0x" + hex digits + null terminator
-    unsigned char *addr = (unsigned char*)&ptr;
-    int i;
+static	void	ft_putaddress_fd(void *address, int fd) {
+    unsigned long addr = (unsigned long)address;
 
-    // Start with "0x"
-    buffer[0] = '0';
-    buffer[1] = 'x';
+    char buffer[20];
+    char *hex_chars = "0123456789abcdef";
+    int i = sizeof(buffer) - 1;
 
-    // Convert the pointer address to hexadecimal
-    for (i = sizeof(void*) - 1; i >= 0; i--) {
-        buffer[2 + 2 * (sizeof(void*) - 1 - i)] = hex_digits[(addr[i] >> 4) & 0x0F];
-        buffer[2 + 2 * (sizeof(void*) - 1 - i) + 1] = hex_digits[addr[i] & 0x0F];
+    buffer[i--] = '\n';
+
+    while (addr > 0)
+    {
+        buffer[i--] = hex_chars[addr % 16];
+        addr /= 16;
     }
 
-    // Null-terminate the string
-    buffer[2 + 2 * sizeof(void*)] = '\0';
+    buffer[i--] = 'x';
+    buffer[i] = '0';
 
-    // Write the formatted address string to standard output
-    write(STDOUT_FILENO, buffer, 2 + 2 * sizeof(void*));
+    write(fd, &buffer[i], sizeof(buffer) - i);
 }
 
 void	ft_printf(const char *format, ...)
@@ -98,11 +96,8 @@ void	ft_printf(const char *format, ...)
 				ft_putstr_fd(va_arg(inputs, char *), 1);
 			if (format[i] == 'c')
 				ft_putchar_fd(va_arg(inputs, int), 1);
-
-			// print address
 			if (format[i] == 'p')
-				print_address(va_arg(inputs, void *));
-
+				ft_putaddress_fd((void *)va_arg(inputs, void *), 1);
 
 
 			if (format[i] == '%')
@@ -112,17 +107,6 @@ void	ft_printf(const char *format, ...)
 			ft_putchar_fd(format[i], 1);
 		i++;
 	}
-
-	// int a = va_arg(inputs, int);
-	// int b = va_arg(inputs, int);
-
-	// ft_putstr_fd((char *)format, 1);
-	// ft_putchar_fd('\n', 1);
-
-	// ft_putnbr_fd(a, 1);
-	// ft_putnbr_fd(b, 1);
-
-
 
 	ft_putchar_fd('\n', 1);
 	ft_putchar_fd('\n', 1);
@@ -142,20 +126,17 @@ int main() {
 
 /*
 
-c
-s
-p ---------
 
-d
-i --------------
-u ------------
-x-----------
-X----------
-%
+c DONE
+s DONE
+p DONE
+d DONE
+% DONE
+i -
+u -
+x -
+X -
 
-printf("%d", 12)
-printf("%d\n%d", 12, 42)
-printf("%d\n%d ---> %s", 12, 42, "Hello")
 
 */
 
