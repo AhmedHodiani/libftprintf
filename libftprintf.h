@@ -4,6 +4,6 @@
 # include "libft/libft.h"
 # include <unistd.h>
 
-void ft_printf(const char *format, ...);
+int ft_printf(const char *format, ...);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: ataher <ataher@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/07 13:41:49 by ataher            #+#    #+#             */
-/*   Updated: 2024/09/09 10:34:04 by ataher           ###   ########.fr       */
+/*   Updated: 2024/09/09 10:36:21 by ataher           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,7 +76,7 @@ static	void	ft_putaddress_fd(void *address, int fd) {
     write(fd, &buffer[i], sizeof(buffer) - i);
 }
 
-void	ft_printf(const char *format, ...)
+int	ft_printf(const char *format, ...)
 {
 	ft_putchar_fd('\n', 1);
 	ft_putchar_fd('\n', 1);
@@ -111,6 +111,7 @@ void	ft_printf(const char *format, ...)
 	ft_putchar_fd('\n', 1);
 	ft_putchar_fd('\n', 1);
 	va_end(inputs);
+	return (0);
 }
 
 
