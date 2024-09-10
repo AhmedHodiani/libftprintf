@@ -6,11 +6,11 @@
 /*   By: ataher <ataher@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/10 08:07:41 by ataher            #+#    #+#             */
-/*   Updated: 2024/09/10 08:07:47 by ataher           ###   ########.fr       */
+/*   Updated: 2024/09/10 08:33:04 by ataher           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libftprintf.h"
+#include "ft_printf.h"
 
 int	ft_putnbr_fd(int n, int fd)
 {

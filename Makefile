@@ -5,7 +5,7 @@ OBJ_DIR		= obj/
 CC			= cc
 CFLAGS		= -Wall -Wextra -Werror -I
 
-SRC_FILES	= ft_printf ft_putaddress_fd ft_putchar_fd ft_putnbr_fd ft_putstr_fd ft_strlen
+SRC_FILES	= ft_printf ft_putaddress_fd ft_putchar_fd ft_putnbr_fd ft_putstr_fd ft_strlen ft_puthex_fd
 SRC 		= $(addprefix $(SRC_DIR), $(addsuffix .c, $(SRC_FILES)))
 OBJ 		= $(addprefix $(OBJ_DIR), $(addsuffix .o, $(SRC_FILES)))
 

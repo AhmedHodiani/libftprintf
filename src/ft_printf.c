@@ -6,17 +6,19 @@
 /*   By: ataher <ataher@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/07 13:41:49 by ataher            #+#    #+#             */
-/*   Updated: 2024/09/10 08:09:39 by ataher           ###   ########.fr       */
+/*   Updated: 2024/09/10 09:14:40 by ataher           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-# include "libftprintf.h"
+# include "ft_printf.h"
 
 /*
 Allowed:
 malloc, free, write,
 va_start, va_arg, va_copy, va_end
 */
+
+
 
 int	ft_printf(const char *format, ...)
 {
@@ -30,7 +32,7 @@ int	ft_printf(const char *format, ...)
 		if (format[i] == '%')
 		{
 			i++;
-			if (format[i] == 'd')
+			if (format[i] == 'd' || format[i] == 'i')
 			{
 				int len = ft_putnbr_fd(va_arg(inputs, int), 1);
 				if (len == -1)
@@ -58,6 +60,11 @@ int	ft_printf(const char *format, ...)
 				count += len;
 			}
 
+			if (format[i] == 'x' || format[i] == 'X')
+			{
+				count += ft_puthex_fd(va_arg(inputs, unsigned int), format[i], 1);
+			}
+
 
 			if (format[i] == '%')
 			{
@@ -79,14 +86,14 @@ int	ft_printf(const char *format, ...)
 }
 
 
-int main() {
-	int a = 10;
-	ft_putchar_fd('\n', 1);
-	ft_putchar_fd('\n', 1);
-	ft_printf("%d  %d %d %c--->\n %s 100%%  %p", 234, 23, 11, 'a',"asdfasdf", (void *)&a);
+// int main() {
+// 	unsigned int a = 53435466;
+// 	ft_putchar_fd('\n', 1);
+// 	ft_putchar_fd('\n', 1);
 
-	printf("%p\n\n\n", (void *)&a);
-}
+// 	ft_printf("%X", a);
+// 	printf("\n\n\n%X\n\n\n", a);
+// }
 
 
 /*

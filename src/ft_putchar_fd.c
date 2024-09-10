@@ -6,11 +6,11 @@
 /*   By: ataher <ataher@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/10 08:04:01 by ataher            #+#    #+#             */
-/*   Updated: 2024/09/10 08:26:22 by ataher           ###   ########.fr       */
+/*   Updated: 2024/09/10 08:33:04 by ataher           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libftprintf.h"
+#include "ft_printf.h"
 
 int	ft_putchar_fd(char c, int fd)
 {
