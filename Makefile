@@ -1,30 +1,33 @@
-SRCS		= ft_printf.c
-OBJS		= $(SRCS:.c=.o)
+NAME		= libftprintf.a
+INCLUDE		= include
+SRC_DIR		= src/
+OBJ_DIR		= obj/
+CC			= cc
+CFLAGS		= -Wall -Wextra -Werror -I
 
-LIBFT_PATH = ./libft
-LIBFT = $(LIBFT_PATH)/libft.a
+SRC_FILES	= ft_printf ft_putaddress_fd ft_putchar_fd ft_putnbr_fd ft_putstr_fd ft_strlen
+SRC 		= $(addprefix $(SRC_DIR), $(addsuffix .c, $(SRC_FILES)))
+OBJ 		= $(addprefix $(OBJ_DIR), $(addsuffix .o, $(SRC_FILES)))
 
-CC		= cc
-CFLAGS	= -Wall -Wextra -Werror -I$(LIBFT_PATH) -I.
-NAME	= libftprintf.a
-
+OBJF		= .cache_exists
 
 all: $(NAME)
 
-$(LIBFT):
-	make -C $(LIBFT_PATH)
+$(NAME): $(OBJ)
+	ar rcs $(NAME) $(OBJ)
 
-$(NAME): $(LIBFT) $(OBJS)
-	ar rcs $(NAME) $(OBJS)
+$(OBJ_DIR)%.o: $(SRC_DIR)%.c | $(OBJF)
+	$(CC) $(CFLAGS) $(INCLUDE) -c $< -o $@
 
-$(OBJS): $(SRCS)
-	${CC} $(CFLAGS) -c $(SRCS)
+$(OBJF):
+	@mkdir -p $(OBJ_DIR)
 
 clean:
-	rm -f $(OBJS)
+	rm -rf $(OBJ_DIR)
 
 fclean: clean
 	rm -f $(NAME)
-	make -C $(LIBFT_PATH) fclean
 
-re:  fclean $(NAME)
+re: fclean all
+
+.PHONY: all clean fclean re
