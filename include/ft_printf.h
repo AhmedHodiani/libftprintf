@@ -6,7 +6,7 @@
 /*   By: ataher <ataher@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/10 10:35:43 by ataher            #+#    #+#             */
-/*   Updated: 2024/09/10 10:35:49 by ataher           ###   ########.fr       */
+/*   Updated: 2024/09/10 13:24:25 by ataher           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,8 +27,8 @@ int		ft_putunsigned_fd(unsigned int n, int fd);
 
 // helpers
 void	hp_puthex_fd(unsigned long num, const char format, int fd);
-int		hp_hexlen(unsigned	long num);
 int		hp_putchar_fd(char c, int fd);
+size_t	hp_hexlen(unsigned	long num);
 size_t	hp_strlen(char const *s);
 
 #endif

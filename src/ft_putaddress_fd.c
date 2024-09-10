@@ -6,7 +6,7 @@
 /*   By: ataher <ataher@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/10 08:03:21 by ataher            #+#    #+#             */
-/*   Updated: 2024/09/10 10:36:40 by ataher           ###   ########.fr       */
+/*   Updated: 2024/09/10 13:23:47 by ataher           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,5 +22,5 @@ int	ft_putaddress_fd(void *address, int fd)
 	hp_putchar_fd('0', fd);
 	hp_putchar_fd('x', fd);
 	hp_puthex_fd((unsigned long)addr, 'x', fd);
-	return (2 + hp_hexlen(addr));
+	return (2 + (int)hp_hexlen(addr));
 }

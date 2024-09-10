@@ -6,13 +6,15 @@
 /*   By: ataher <ataher@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/10 09:46:39 by ataher            #+#    #+#             */
-/*   Updated: 2024/09/10 09:46:54 by ataher           ###   ########.fr       */
+/*   Updated: 2024/09/10 13:23:27 by ataher           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	hp_hexlen(unsigned	long num)
+#include "ft_printf.h"
+
+size_t	hp_hexlen(unsigned	long num)
 {
-	int	len;
+	size_t	len;
 
 	len = 0;
 	while (num != 0)
