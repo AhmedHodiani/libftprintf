@@ -3,8 +3,18 @@ CC			= cc
 INCLUDE		= include
 CFLAGS		= -Wall -Wextra -Werror -I$(INCLUDE)
 
-SRC		= $(wildcard src/*.c helpers/*.c)
-OBJ		= $(patsubst %.c,obj/%.o,$(SRC))
+SRC		=	src/ft_printf.c \
+			src/ft_putaddress_fd.c \
+			src/ft_puthex_fd.c \
+			src/ft_putnbr_fd.c \
+			src/ft_putstr_fd.c \
+			src/ft_putunsigned_fd.c
+HELPERS	=	helpers/hp_hexlen.c \
+			helpers/hp_putchar_fd.c \
+			helpers/hp_puthex_fd.c \
+			helpers/hp_strlen.c
+OBJ		=	$(SRC:src/%.c=obj/src/%.o) \
+			$(HELPERS:helpers/%.c=obj/helpers/%.o)
 
 all: $(NAME)
 
