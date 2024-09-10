@@ -1,18 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putchar_fd.c                                    :+:      :+:    :+:   */
+/*   hp_strlen.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ataher <ataher@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/09/10 08:04:01 by ataher            #+#    #+#             */
-/*   Updated: 2024/09/10 08:33:04 by ataher           ###   ########.fr       */
+/*   Created: 2024/09/10 08:06:53 by ataher            #+#    #+#             */
+/*   Updated: 2024/09/10 09:42:37 by ataher           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int	ft_putchar_fd(char c, int fd)
+size_t	hp_strlen(char const *s)
 {
-	return (write(fd, &c, 1));
+	int	i;
+
+	i = 0;
+	while (s[i])
+		i++;
+	return (i);
 }

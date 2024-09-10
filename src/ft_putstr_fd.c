@@ -6,7 +6,7 @@
 /*   By: ataher <ataher@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/10 08:04:19 by ataher            #+#    #+#             */
-/*   Updated: 2024/09/10 08:34:38 by ataher           ###   ########.fr       */
+/*   Updated: 2024/09/10 09:42:56 by ataher           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,5 +17,5 @@ int	ft_putstr_fd(char *s, int fd)
 	if (!s)
 		return ft_putstr_fd("(null)", fd);
 	else
-		return (write(fd, s, ft_strlen(s)));
+		return (write(fd, s, hp_strlen(s)));
 }

@@ -1,23 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlen.c                                        :+:      :+:    :+:   */
+/*   hp_hexlen.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ataher <ataher@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/09/10 08:06:53 by ataher            #+#    #+#             */
-/*   Updated: 2024/09/10 08:33:04 by ataher           ###   ########.fr       */
+/*   Created: 2024/09/10 09:46:39 by ataher            #+#    #+#             */
+/*   Updated: 2024/09/10 09:46:54 by ataher           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
-
-size_t	ft_strlen(char const *s)
+int	hp_hexlen(unsigned	long num)
 {
-	int	i;
+	int	len;
 
-	i = 0;
-	while (s[i])
-		i++;
-	return (i);
+	len = 0;
+	while (num != 0)
+	{
+		len++;
+		num = num / 16;
+	}
+	return (len);
 }

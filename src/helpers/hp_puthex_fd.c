@@ -1,24 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_puthex_fd.c                                     :+:      :+:    :+:   */
+/*   hp_puthex_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ataher <ataher@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/09/10 09:13:48 by ataher            #+#    #+#             */
-/*   Updated: 2024/09/10 10:03:34 by ataher           ###   ########.fr       */
+/*   Created: 2024/09/10 09:39:08 by ataher            #+#    #+#             */
+/*   Updated: 2024/09/10 10:01:45 by ataher           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+# include "ft_printf.h"
 
-
-
-int	ft_puthex_fd(unsigned int num, const char format, int fd)
+void	hp_puthex_fd(unsigned long num, const char format, int fd)
 {
-	if (num == 0)
-		return (write(1, "0", 1));
+	if (num >= 16)
+	{
+		hp_puthex_fd(num / 16, format, fd);
+		hp_puthex_fd(num % 16, format, fd);
+	}
 	else
-		hp_puthex_fd(num, format, fd);
-	return (hp_hexlen(num));
+	{
+		if (num <= 9)
+			hp_putchar_fd((num + '0'), fd);
+		else
+		{
+			if (format == 'x')
+				hp_putchar_fd((num - 10 + 'a'), fd);
+			if (format == 'X')
+				hp_putchar_fd((num - 10 + 'A'), fd);
+		}
+	}
 }

@@ -6,7 +6,7 @@
 /*   By: ataher <ataher@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/07 13:41:49 by ataher            #+#    #+#             */
-/*   Updated: 2024/09/10 09:14:40 by ataher           ###   ########.fr       */
+/*   Updated: 2024/09/10 10:08:01 by ataher           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,52 +33,21 @@ int	ft_printf(const char *format, ...)
 		{
 			i++;
 			if (format[i] == 'd' || format[i] == 'i')
-			{
-				int len = ft_putnbr_fd(va_arg(inputs, int), 1);
-				if (len == -1)
-					return count;
-				count += len;
-			}
+				count += ft_putnbr_fd(va_arg(inputs, int), 1);
 			if (format[i] == 's')
-			{
-				int len = ft_putstr_fd(va_arg(inputs, char *), 1);
-				if (len == -1)
-					return count;
-				count += len;
-			}
+				count += ft_putstr_fd(va_arg(inputs, char *), 1);
 			if (format[i] == 'c')
-			{
-				if (ft_putchar_fd(va_arg(inputs, int), 1) == -1)
-					return count;
-				count += 1;
-			}
+				count += hp_putchar_fd(va_arg(inputs, int), 1);
 			if (format[i] == 'p')
-			{
-				int len = ft_putaddress_fd((void *)va_arg(inputs, void *), 1);
-				if (len == -1)
-					return count;
-				count += len;
-			}
-
+				count += ft_putaddress_fd((void *)va_arg(inputs, void *), 1);
 			if (format[i] == 'x' || format[i] == 'X')
-			{
 				count += ft_puthex_fd(va_arg(inputs, unsigned int), format[i], 1);
-			}
-
 
 			if (format[i] == '%')
-			{
-				if (ft_putchar_fd('%', 1) == -1)
-					return count;
-				count += 1;
-			}
+				count += hp_putchar_fd('%', 1);
 		}
 		else
-		{
-			if (ft_putchar_fd(format[i], 1) == -1)
-				return count;
-			count += 1;
-		}
+			count += hp_putchar_fd(format[i], 1);
 		i++;
 	}
 	va_end(inputs);
@@ -87,12 +56,12 @@ int	ft_printf(const char *format, ...)
 
 
 // int main() {
-// 	unsigned int a = 53435466;
-// 	ft_putchar_fd('\n', 1);
-// 	ft_putchar_fd('\n', 1);
+// 	int a = 0;
+// 	hp_putchar_fd('\n', 1);
+// 	hp_putchar_fd('\n', 1);
 
-// 	ft_printf("%X", a);
-// 	printf("\n\n\n%X\n\n\n", a);
+// 	ft_printf("%p", NULL);
+// 	printf("\n\n\n%p\n\n\n", NULL);
 // }
 
 
