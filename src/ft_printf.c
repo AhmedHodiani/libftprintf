@@ -6,46 +6,44 @@
 /*   By: ataher <ataher@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/07 13:41:49 by ataher            #+#    #+#             */
-/*   Updated: 2024/09/10 10:08:01 by ataher           ###   ########.fr       */
+/*   Updated: 2024/09/10 10:34:45 by ataher           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-# include "ft_printf.h"
+#include "ft_printf.h"
 
-/*
-Allowed:
-malloc, free, write,
-va_start, va_arg, va_copy, va_end
-*/
-
-
+int	hp_printf(char format, va_list inputs)
+{
+	if (format == 'd' || format == 'i')
+		return (ft_putnbr_fd(va_arg(inputs, int), 1));
+	if (format == 's')
+		return (ft_putstr_fd(va_arg(inputs, char *), 1));
+	if (format == 'c')
+		return (hp_putchar_fd(va_arg(inputs, int), 1));
+	if (format == 'p')
+		return (ft_putaddress_fd((void *)va_arg(inputs, void *), 1));
+	if (format == 'x' || format == 'X')
+		return (ft_puthex_fd(va_arg(inputs, unsigned int), format, 1));
+	if (format == 'u')
+		return (ft_putunsigned_fd(va_arg(inputs, unsigned int), 1));
+	if (format == '%')
+		return (hp_putchar_fd('%', 1));
+	return (0);
+}
 
 int	ft_printf(const char *format, ...)
 {
 	va_list	inputs;
-	va_start(inputs, format);
+	int		i;
+	int		count;
 
-	int i = 0;
-	int count = 0;
-	while(format[i])
+	va_start(inputs, format);
+	i = 0;
+	count = 0;
+	while (format[i])
 	{
 		if (format[i] == '%')
-		{
-			i++;
-			if (format[i] == 'd' || format[i] == 'i')
-				count += ft_putnbr_fd(va_arg(inputs, int), 1);
-			if (format[i] == 's')
-				count += ft_putstr_fd(va_arg(inputs, char *), 1);
-			if (format[i] == 'c')
-				count += hp_putchar_fd(va_arg(inputs, int), 1);
-			if (format[i] == 'p')
-				count += ft_putaddress_fd((void *)va_arg(inputs, void *), 1);
-			if (format[i] == 'x' || format[i] == 'X')
-				count += ft_puthex_fd(va_arg(inputs, unsigned int), format[i], 1);
-
-			if (format[i] == '%')
-				count += hp_putchar_fd('%', 1);
-		}
+			count += hp_printf(format[++i], inputs);
 		else
 			count += hp_putchar_fd(format[i], 1);
 		i++;
@@ -53,8 +51,6 @@ int	ft_printf(const char *format, ...)
 	va_end(inputs);
 	return (count);
 }
-
-
 // int main() {
 // 	int a = 0;
 // 	hp_putchar_fd('\n', 1);
@@ -63,23 +59,3 @@ int	ft_printf(const char *format, ...)
 // 	ft_printf("%p", NULL);
 // 	printf("\n\n\n%p\n\n\n", NULL);
 // }
-
-
-/*
-
-
-c DONE
-s DONE
-p DONE
-d DONE
-% DONE
-i -
-u -
-x -
-X -
-
-
-*/
-
-
-

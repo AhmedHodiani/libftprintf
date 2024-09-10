@@ -6,7 +6,7 @@
 /*   By: ataher <ataher@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/10 08:07:41 by ataher            #+#    #+#             */
-/*   Updated: 2024/09/10 10:01:56 by ataher           ###   ########.fr       */
+/*   Updated: 2024/09/10 10:38:51 by ataher           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int	ft_putnbr_fd(int n, int fd)
 {
-	int count;
+	int	count;
 
 	count = 0;
 	if (n == -2147483648)
@@ -27,10 +27,7 @@ int	ft_putnbr_fd(int n, int fd)
 		n = -n;
 	}
 	if (n > 9)
-	{
-		if ((count += ft_putnbr_fd(n / 10, fd)) == -1)
-			return (-1);
-	}
+		count += ft_putnbr_fd(n / 10, fd);
 	if (hp_putchar_fd(n % 10 + '0', fd) == -1)
 		return (-1);
 	count++;

@@ -6,13 +6,11 @@
 /*   By: ataher <ataher@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/10 09:13:48 by ataher            #+#    #+#             */
-/*   Updated: 2024/09/10 10:03:34 by ataher           ###   ########.fr       */
+/*   Updated: 2024/09/10 10:37:30 by ataher           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
-
-
 
 int	ft_puthex_fd(unsigned int num, const char format, int fd)
 {
