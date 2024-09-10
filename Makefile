@@ -12,7 +12,6 @@ $(NAME): $(OBJ)
 	ar rcs $(NAME) $(OBJ)
 
 obj/%.o: src/%.c
-	@mkdir -p obj
 	@mkdir -p obj/helpers
 	$(CC) $(CFLAGS) -c $< -o $@
 
