@@ -6,7 +6,7 @@
 /*   By: ataher <ataher@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/07 13:41:49 by ataher            #+#    #+#             */
-/*   Updated: 2024/09/10 10:34:45 by ataher           ###   ########.fr       */
+/*   Updated: 2024/09/14 08:50:32 by ataher           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,8 @@ int	ft_printf(const char *format, ...)
 	int		i;
 	int		count;
 
+	if (stdout->_flags & 8)
+		return (-1);
 	va_start(inputs, format);
 	i = 0;
 	count = 0;

@@ -6,7 +6,7 @@
 /*   By: ataher <ataher@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/10 10:35:43 by ataher            #+#    #+#             */
-/*   Updated: 2024/09/10 14:21:22 by ataher           ###   ########.fr       */
+/*   Updated: 2024/09/14 08:39:34 by ataher           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 # include <unistd.h>
 # include <stdarg.h>
 # include <stdlib.h>
+# include <stdio.h>
 
 int		ft_printf(const char *format, ...);
 int		ft_putaddress_fd(void *address, int fd);
