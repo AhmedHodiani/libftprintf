@@ -6,7 +6,7 @@
 /*   By: ataher <ataher@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/07 13:41:49 by ataher            #+#    #+#             */
-/*   Updated: 2024/09/14 08:50:32 by ataher           ###   ########.fr       */
+/*   Updated: 2024/11/19 16:41:03 by ataher           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,18 @@ int	ft_printf(const char *format, ...)
 	}
 	va_end(inputs);
 	return (count);
+}
+
+void	ft_print_strings(char **strings)
+{
+	int	i;
+
+	i = 0;
+	while (strings[i])
+	{
+		ft_printf("%s\n", strings[i]);
+		i++;
+	}
 }
 // int main() {
 // 	int a = 0;
