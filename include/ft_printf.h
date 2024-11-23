@@ -6,7 +6,7 @@
 /*   By: ataher <ataher@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/10 10:35:43 by ataher            #+#    #+#             */
-/*   Updated: 2024/11/23 17:27:01 by ataher           ###   ########.fr       */
+/*   Updated: 2024/11/23 17:49:10 by ataher           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,10 +52,11 @@ size_t	hp_hexlen(unsigned	long num);
 size_t	hp_strlen(char const *s);
 
 // buggers
-void bugger_info(char *format, ...);
-void bugger_error(char *format, ...);
-void bugger_box(char *format, ...);
-void bugger_cute(char *format, ...);
-void bugger_warning(char *format, ...);
+void    bugger_cmd(char *format, ...);
+void    bugger_info(char *format, ...);
+void    bugger_error(char *format, ...);
+void    bugger_box(char *format, ...);
+void    bugger_cute(char *format, ...);
+void    bugger_warning(char *format, ...);
 
 #endif
