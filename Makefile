@@ -13,8 +13,10 @@ HELPERS	=	helpers/hp_hexlen.c \
 			helpers/hp_putchar_fd.c \
 			helpers/hp_puthex_fd.c \
 			helpers/hp_strlen.c
+BUGGERS	=	buggers/bugger.c
 OBJ		=	$(SRC:src/%.c=obj/src/%.o) \
-			$(HELPERS:helpers/%.c=obj/helpers/%.o)
+			$(HELPERS:helpers/%.c=obj/helpers/%.o) \
+			$(BUGGERS:buggers/%.c=obj/buggers/%.o)
 
 all: $(NAME)
 
@@ -24,6 +26,7 @@ $(NAME): $(OBJ)
 obj/%.o: %.c
 	@mkdir -p obj/src
 	@mkdir -p obj/helpers
+	@mkdir -p obj/buggers
 	$(CC) $(CFLAGS) -c $< -o $@
 
 clean:
