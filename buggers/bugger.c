@@ -6,11 +6,11 @@
 /*   By: ataher <ataher@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/24 09:52:34 by ataher            #+#    #+#             */
-/*   Updated: 2024/11/24 09:54:09 by ataher           ###   ########.fr       */
+/*   Updated: 2024/12/11 16:15:16 by ataher           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/ft_printf.h"
+#include "../include/libftprintf.h"
 
 static void	hp_bugger(char *format, va_list inputs)
 {
