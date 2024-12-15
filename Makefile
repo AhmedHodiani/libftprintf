@@ -21,13 +21,13 @@ OBJ		=	$(SRC:src/%.c=obj/src/%.o) \
 all: $(NAME)
 
 $(NAME): $(OBJ)
-	ar rcs $(NAME) $(OBJ)
+	@ar rcs $(NAME) $(OBJ)
 
 obj/%.o: %.c
 	@mkdir -p obj/src
 	@mkdir -p obj/helpers
 	@mkdir -p obj/buggers
-	$(CC) $(CFLAGS) -c $< -o $@
+	@$(CC) $(CFLAGS) -c $< -o $@
 
 clean:
 	rm -rf obj
