@@ -6,28 +6,28 @@
 /*   By: ataher <ataher@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/07 13:41:49 by ataher            #+#    #+#             */
-/*   Updated: 2024/12/11 16:15:16 by ataher           ###   ########.fr       */
+/*   Updated: 2025/01/04 01:55:00 by ataher           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libftprintf.h"
 
-int	hp_printf(char format, va_list inputs)
+int	hp_printf(int fd, char format, va_list inputs)
 {
 	if (format == 'd' || format == 'i')
-		return (ft_putnbr_fd(va_arg(inputs, int), 1));
+		return (ft_putnbr_fd(va_arg(inputs, int), fd));
 	if (format == 's')
-		return (ft_putstr_fd(va_arg(inputs, char *), 1));
+		return (ft_putstr_fd(va_arg(inputs, char *), fd));
 	if (format == 'c')
-		return (hp_putchar_fd(va_arg(inputs, int), 1));
+		return (hp_putchar_fd(va_arg(inputs, int), fd));
 	if (format == 'p')
-		return (ft_putaddress_fd((void *)va_arg(inputs, void *), 1));
+		return (ft_putaddress_fd((void *)va_arg(inputs, void *), fd));
 	if (format == 'x' || format == 'X')
-		return (ft_puthex_fd(va_arg(inputs, unsigned int), format, 1));
+		return (ft_puthex_fd(va_arg(inputs, unsigned int), format, fd));
 	if (format == 'u')
-		return (ft_putunsigned_fd(va_arg(inputs, unsigned int), 1));
+		return (ft_putunsigned_fd(va_arg(inputs, unsigned int), fd));
 	if (format == '%')
-		return (hp_putchar_fd('%', 1));
+		return (hp_putchar_fd('%', fd));
 	return (0);
 }
 
@@ -45,7 +45,7 @@ int	ft_printf(const char *format, ...)
 	while (format[i])
 	{
 		if (format[i] == '%')
-			count += hp_printf(format[++i], inputs);
+			count += hp_printf(1, format[++i], inputs);
 		else
 			count += hp_putchar_fd(format[i], 1);
 		i++;
@@ -54,22 +54,25 @@ int	ft_printf(const char *format, ...)
 	return (count);
 }
 
-void	ft_printf_strings(char **strings)
+int	ft_dprintf(int fd, const char *format, ...)
 {
-	int	i;
+	va_list	inputs;
+	int		i;
+	int		count;
 
+	if (stdout->_flags & 8)
+		return (-1);
+	va_start(inputs, format);
 	i = 0;
-	while (strings[i])
+	count = 0;
+	while (format[i])
 	{
-		ft_printf("%s\n", strings[i]);
+		if (format[i] == '%')
+			count += hp_printf(fd, format[++i], inputs);
+		else
+			count += hp_putchar_fd(format[i], fd);
 		i++;
 	}
+	va_end(inputs);
+	return (count);
 }
-// int main() {
-// 	int a = 0;
-// 	hp_putchar_fd('\n', 1);
-// 	hp_putchar_fd('\n', 1);
-
-// 	ft_printf("%p", NULL);
-// 	printf("\n\n\n%p\n\n\n", NULL);
-// }
