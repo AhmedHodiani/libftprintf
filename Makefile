@@ -1,4 +1,6 @@
-NAME		= libftprintf.a
+BUILD_PATH ?= ./build
+LIB_NAME = $(BUILD_PATH)/libftprintf.a
+
 CC			= cc
 INCLUDE		= include
 CFLAGS		= -Wall -Wextra -Werror -I$(INCLUDE)
@@ -14,23 +16,23 @@ SRCS		= src/ft_printf.c \
 				src/helpers/hp_puthex_fd.c \
 				src/helpers/hp_strlen.c \
 				src/buggers/bugger.c
-OBJS		= $(SRCS:src/%.c=obj/%.o)
+OBJS		= $(SRCS:src/%.c=$(BUILD_PATH)/obj/%.o)
 
-all: $(NAME)
+all: $(LIB_NAME)
 
-$(NAME): $(OBJS)
-	@ar rcs $(NAME) $(OBJS)
+$(LIB_NAME): $(OBJS)
+	ar rcs $(LIB_NAME) $(OBJS)
 
-obj/%.o: src/%.c
-	@mkdir -p obj/helpers
-	@mkdir -p obj/buggers
-	@$(CC) $(CFLAGS) -c $< -o $@
+$(BUILD_PATH)/obj/%.o: src/%.c
+	@mkdir -p $(BUILD_PATH)/obj/helpers
+	@mkdir -p $(BUILD_PATH)/obj/buggers
+	$(CC) $(CFLAGS) -c $< -o $@
 
 clean:
-	@rm -rf obj
+	@rm -rf $(BUILD_PATH)/obj
 
 fclean: clean
-	@rm -f $(NAME)
+	@rm -rf $(BUILD_PATH)
 
 re: fclean all
 
