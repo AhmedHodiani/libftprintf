@@ -6,7 +6,7 @@
 /*   By: ataher <ataher@student.42amman.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/10 10:35:43 by ataher            #+#    #+#             */
-/*   Updated: 2025/01/04 02:44:02 by ataher           ###   ########.fr       */
+/*   Updated: 2025/01/04 05:49:11 by ataher           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,7 @@
 
 int		ft_printf(const char *format, ...);
 int		ft_dprintf(int fd, const char *format, ...);
+int		ft_color_printf(char *color, const char *format, ...);
 
 int		hp_printf(int fd, char format, va_list inputs);
 int		ft_putaddress_fd(void *address, int fd);
