@@ -6,7 +6,7 @@
 /*   By: ataher <ataher@student.42amman.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/07 13:41:49 by ataher            #+#    #+#             */
-/*   Updated: 2025/01/04 05:48:54 by ataher           ###   ########.fr       */
+/*   Updated: 2025/01/20 14:14:58 by ataher           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,7 +77,7 @@ int	ft_dprintf(int fd, const char *format, ...)
 	return (count);
 }
 
-int ft_color_printf(char *color, const char *format, ...)
+int	ft_color_printf(char *color, const char *format, ...)
 {
 	va_list	inputs;
 	int		i;
